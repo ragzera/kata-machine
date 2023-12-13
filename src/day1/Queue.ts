@@ -29,11 +29,17 @@ export default class Queue<T> {
             return undefined;
         }
         this.length--;
+
         const head = this.head;
         this.head = this.head.next;
 
         // free memory
         head.next = undefined;
+
+        // considering case where queue was emptied
+        if (this.length === 0) {
+            this.tail = undefined;
+        }
 
         return head.value;
     }
