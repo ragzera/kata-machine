@@ -44,8 +44,9 @@ export default class ArrayList<T> {
         // TODO: Fix implementation
         for (let i = 0; i < this.length; i++) {
             if (this.arr[i] === item) {
+                const auxArray = [...this.arr];
                 for (let j = i; j < this.length; j++) {
-                    this.arr[i] = this.arr[i + 1];
+                    this.arr[j] = auxArray[j + 1];
                 }
                 this.length--;
                 return item;
