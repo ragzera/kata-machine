@@ -41,6 +41,7 @@ export default class ArrayList<T> {
         return;
     }
     remove(item: T): T | undefined {
+        // TODO: Fix implementation
         for (let i = 0; i < this.length; i++) {
             if (this.arr[i] === item) {
                 for (let j = i; j < this.length; j++) {
