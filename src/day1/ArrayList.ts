@@ -8,7 +8,21 @@ export default class ArrayList<T> {
         this.arr = new Array<T>(initCapactity);
     }
 
-    prepend(item: T): void {}
+    prepend(item: T): void {
+        this.updateCapacity();
+        if (this.length === 0) {
+            this.arr[0] = item;
+            this.length++;
+            return;
+        }
+        const auxArr = [...this.arr];
+        this.arr[0] = item;
+        for (let i = 1; i <= this.length; i++) {
+            this.arr[i] = auxArr[i - 1];
+        }
+        this.length++;
+        return;
+    }
     insertAt(item: T, idx: number): void {}
     append(item: T): void {
         const currIndex = this.length;
@@ -47,7 +61,7 @@ export default class ArrayList<T> {
         return item;
     }
     updateCapacity() {
-        if (this.length < this.arr.length) {
+        if (this.length < this.arr.length - 1) {
             return;
         }
         const currCapactity = this.arr.length;
