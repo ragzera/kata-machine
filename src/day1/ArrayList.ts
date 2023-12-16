@@ -1,6 +1,5 @@
 export default class ArrayList<T> {
     public length: number;
-    private capacity: number;
     private arr: Array<T>;
 
     constructor(initCapactity: number) {
@@ -23,12 +22,22 @@ export default class ArrayList<T> {
         this.length++;
         return;
     }
-    insertAt(item: T, idx: number): void {}
+    insertAt(item: T, idx: number): void {
+        this.updateCapacity();
+        if (idx > this.length) {
+            return;
+        }
+        const auxArr = [...this.arr];
+        this.arr[idx] = item;
+        for (let i = idx + 1; i <= this.length; i++) {
+            this.arr[i] = auxArr[i - 1];
+        }
+    }
     append(item: T): void {
+        this.updateCapacity();
         const currIndex = this.length;
         this.arr[currIndex] = item;
         this.length++;
-        this.updateCapacity();
         return;
     }
     remove(item: T): T | undefined {
