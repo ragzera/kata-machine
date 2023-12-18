@@ -28,4 +28,6 @@ export function test_list(list: List<number>): void {
     list.insertAt(33, 1);
     expect(list.get(1)).toEqual(33);
     expect(list.get(2)).toEqual(5);
+    expect(list.remove(33)).toEqual(33);
+    expect(list.get(1)).toEqual(5);
 }
