@@ -31,7 +31,8 @@ export default class DoublyLinkedList<T> {
     }
     insertAt(item: T, idx: number): void {
         if (idx > this.length) {
-            throw new Error("nope");
+            // throw new Error("nope");
+            return undefined;
         }
 
         if (idx === this.length) {
