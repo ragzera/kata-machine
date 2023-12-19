@@ -9,7 +9,7 @@ export default function two_crystal_balls(breaks: boolean[]): number {
     }
     i -= jump_amount;
     console.log(`New i: ${i}`);
-    for (let j = 0; j < jump_amount && i < breaks.length; ++j, ++i) {
+    for (let j = 0; j <= jump_amount && i < breaks.length; ++j, ++i) {
         if (breaks[i]) {
             return i;
         }
